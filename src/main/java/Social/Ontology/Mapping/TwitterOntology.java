@@ -15,13 +15,13 @@ public class TwitterOntology implements OntologyMapping {
 	
 	public OntModel mapptoOntology(String socialMedia) {
 		MyOntology ontology = new 	MyOntology ();
-		OntModel model= ontology.buildOntology() ;
+		//OntModel model= ontology.buildOntology() ;
 			
 				
-			 model.write(System.out, "RDF/XML-ABBREV");
+		//	 model.write(System.out, "RDF/XML-ABBREV");
 			    
 				
-		return model;
+		return null;
 	}
 
 	public boolean instanciateOntology(File file) {
