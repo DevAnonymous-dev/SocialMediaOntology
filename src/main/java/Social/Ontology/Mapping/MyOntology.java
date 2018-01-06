@@ -7,7 +7,6 @@ import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
-import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.XSD;
 
 public class MyOntology {
@@ -92,67 +91,104 @@ public class MyOntology {
 				+ "Actor_Connectivity");
 
 		// Create source class (social media source of publication)
-		OntClass from = ontModel.createClass(ns + "Source");
+		OntClass Source = ontModel.createClass(ns + "Source");
 		// integrate RDF Review Vocabulary
-		OntClass has_Replay = ontModel.createClass(rev + "Comment");
-		//Create classes location and time use  geonames and time ontologies
-		String geo= "http://www.geonames.org/ontology#";
+		OntClass Replay = ontModel.createClass(rev + "Comment");
+		// Create classes location and time use geonames and time ontologies
+		String geo = "http://www.geonames.org/ontology#";
 		ontModel.setNsPrefix("geo", geo);
-		OntClass Location= ontModel.createClass(geo + "location");
-		String time =   "http://www.w3.org/2006/time#";
+		OntClass Location = ontModel.createClass(geo + "location");
+		String time = "http://www.w3.org/2006/time#";
 		ontModel.setNsPrefix("time", time);
-		OntClass created_at= ontModel.createClass(geo + "time");
+		OntClass created_at = ontModel.createClass(geo + "time");
+
 		// Create Publication DataTypes
-		DatatypeProperty has_id= ontModel.createDatatypeProperty(ns + "identifier");
-		// 'hasAge' takes integer values, so its range is 'integer'
-		// Basic datatypes are defined in the ‘vocabulary’ package
+		DatatypeProperty has_id = ontModel.createDatatypeProperty(ns
+				+ "identifier");
 		has_id.setDomain(Publication);
 		has_id.setDomain(Actor);
 		has_id.setRange(XSD.xstring); // com.hp.hpl.jena.vocabulary.XSD
-		
-				
-				DatatypeProperty has_topic= ontModel.createDatatypeProperty(SIOC + "topic");
-				// 'hasAge' takes integer values, so its range is 'integer'
-				// Basic datatypes are defined in the ‘vocabulary’ package
-				has_topic.setDomain(Publication);
-				has_topic.setRange(XSD.xstring); // com.hp.hpl.jena.vocabulary.XSD
 
-				DatatypeProperty language= ontModel.createDatatypeProperty(ns + "language");
-				// 'hasAge' takes integer values, so its range is 'integer'
-				// Basic datatypes are defined in the ‘vocabulary’ package
-				language.setDomain(Publication);
-				language.setRange(XSD.language); // com.hp.hpl.jena.vocabulary.XSD
-				
-			//	Create Actor DataTypes
-				DatatypeProperty has_birthday= ontModel.createDatatypeProperty(foaf + FOAF.birthday);
-				has_birthday.setDomain(Person);
-				has_birthday.setRange(XSD.dateTime);
-				DatatypeProperty has_family_Name= ontModel.createDatatypeProperty(foaf + FOAF.family_name);
-				has_family_Name.setDomain(Person);
-				has_family_Name.setRange(XSD.xstring);
-				DatatypeProperty has_first_Name= ontModel.createDatatypeProperty(foaf + FOAF.firstName);
-				has_first_Name.setDomain(Person);
-				has_first_Name.setRange(XSD.xstring);
-				
-				DatatypeProperty has_gender= ontModel.createDatatypeProperty(foaf + FOAF.gender);
-				has_gender.setDomain(Person);
-				has_gender.setRange(XSD.xstring);
-				
-				
-				DatatypeProperty phone= ontModel.createDatatypeProperty(foaf + FOAF.phone);
-				phone.setDomain(Actor);
-				phone.setRange(XSD.xstring);
+		DatatypeProperty has_topic = ontModel.createDatatypeProperty(SIOC
+				+ "topic");
+		has_topic.setDomain(Publication);
+		has_topic.setRange(XSD.xstring); // com.hp.hpl.jena.vocabulary.XSD
 
-				DatatypeProperty topic_interest= ontModel.createDatatypeProperty(foaf + FOAF.topic_interest);
-				topic_interest.setDomain(Person);
-				topic_interest.setRange(XSD.xstring);
-				DatatypeProperty interest_in= ontModel.createDatatypeProperty(foaf + FOAF.interest);
-				interest_in.setDomain(Actor);
-				interest_in.setRange(XSD.xstring);
-				DatatypeProperty has_accountName= ontModel.createDatatypeProperty(foaf + FOAF.accountName);
-				has_accountName.setDomain(Actor);
-				has_accountName.setRange(XSD.xstring);
-	
+		DatatypeProperty language = ontModel.createDatatypeProperty(ns
+				+ "language");
+		language.setDomain(Publication);
+		language.setRange(XSD.language); // com.hp.hpl.jena.vocabulary.XSD
+
+		DatatypeProperty has_Popularity = ontModel.createDatatypeProperty(ns
+				+ "has_popularity");
+		language.setDomain(Publication);
+		language.setRange(XSD.ENTITY); // com.hp.hpl.jena.vocabulary.XSD
+
+		DatatypeProperty created_by = ontModel.createDatatypeProperty(ns
+				+ "created_by");
+		created_by.setDomain(Publication);
+		created_by.setRange(Actor); // com.hp.hpl.jena.vocabulary.XSD
+
+		DatatypeProperty from = ontModel.createDatatypeProperty(ns + "from");
+		from.setDomain(Publication);
+		from.setRange(Source); // com.hp.hpl.jena.vocabulary.XSD
+
+		DatatypeProperty has_Replay = ontModel.createDatatypeProperty(ns
+				+ "has_Replay");
+		has_Replay.setDomain(Publication);
+		has_Replay.setRange(Replay); // com.hp.hpl.jena.vocabulary.XSD
+
+		DatatypeProperty has_Type = ontModel.createDatatypeProperty(ns
+				+ "has_Type");
+		has_Type.setDomain(Publication);
+		has_Type.setRange(Publication_Type); // com.hp.hpl.jena.vocabulary.XSD
+
+		// Create Actor DataTypes
+		DatatypeProperty has_birthday = ontModel.createDatatypeProperty(foaf
+				+ FOAF.birthday);
+		has_birthday.setDomain(Person);
+		has_birthday.setRange(XSD.dateTime);
+		DatatypeProperty has_family_Name = ontModel.createDatatypeProperty(foaf
+				+ FOAF.family_name);
+		has_family_Name.setDomain(Person);
+		has_family_Name.setRange(XSD.xstring);
+		DatatypeProperty has_first_Name = ontModel.createDatatypeProperty(foaf
+				+ FOAF.firstName);
+		has_first_Name.setDomain(Person);
+		has_first_Name.setRange(XSD.xstring);
+
+		DatatypeProperty has_gender = ontModel.createDatatypeProperty(foaf
+				+ FOAF.gender);
+		has_gender.setDomain(Person);
+		has_gender.setRange(XSD.xstring);
+
+		DatatypeProperty phone = ontModel.createDatatypeProperty(foaf
+				+ FOAF.phone);
+		phone.setDomain(Actor);
+		phone.setRange(XSD.xstring);
+
+		DatatypeProperty topic_interest = ontModel.createDatatypeProperty(foaf
+				+ FOAF.topic_interest);
+		topic_interest.setDomain(Person);
+		topic_interest.setRange(XSD.xstring);
+		DatatypeProperty interest_in = ontModel.createDatatypeProperty(foaf
+				+ FOAF.interest);
+		interest_in.setDomain(Actor);
+		interest_in.setRange(XSD.xstring);
+		DatatypeProperty has_accountName = ontModel.createDatatypeProperty(foaf
+				+ FOAF.accountName);
+		has_accountName.setDomain(Actor);
+		has_accountName.setRange(XSD.xstring);
+
+		DatatypeProperty knows = ontModel.createDatatypeProperty(foaf
+				+ FOAF.knows);
+		knows.setDomain(Person);
+		knows.setRange(Person);
+
+		DatatypeProperty member_of = ontModel.createDatatypeProperty(foaf
+				+ FOAF.member);
+		member_of.setDomain(Person);
+		member_of.setRange(Group);
 
 		// write the model in Turtle
 		ontModel.write(System.out, "RDF/XML-ABBREV");
