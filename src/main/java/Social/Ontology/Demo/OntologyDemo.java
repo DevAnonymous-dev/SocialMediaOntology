@@ -13,7 +13,8 @@ public class OntologyDemo {
 	     OntologyMapping ontology = ontologyFactory.getOntology("Twitter");
 
 	      //call draw method of Circle
-	     ontology.buildOntology("Twitter");
+	     ontology.mapptoOntology("Twitter");
+	     
 
 	
 	}

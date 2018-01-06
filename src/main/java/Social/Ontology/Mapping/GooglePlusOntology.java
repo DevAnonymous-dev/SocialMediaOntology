@@ -7,7 +7,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public class GooglePlusOntology  implements OntologyMapping {
 
-	public OntModel buildOntology(String socialMedia) {
+	public OntModel mapptoOntology(String socialMedia) {
 	
 		return null;
 	}
