@@ -1,6 +1,9 @@
 package Social.Ontology.Demo;
 
+import com.hp.hpl.jena.ontology.OntModel;
+
 import Social.Ontology.Factory.OntologyFactory;
+import Social.Ontology.Mapping.MyOntology;
 import Social.Ontology.Mapping.OntologyMapping;
 
 
@@ -9,11 +12,10 @@ public class OntologyDemo {
 		
 		OntologyFactory ontologyFactory = new OntologyFactory();
 
-	      //get an object of Circle and call its draw method.
 	     OntologyMapping ontology = ontologyFactory.getOntology("Twitter");
-
-	      //call draw method of Circle
-	     ontology.mapptoOntology("Twitter");
+	     MyOntology myontology = new 	MyOntology ();
+		 OntModel model= myontology.buildOntology() ;
+	     ontology.mapptoOntology("Twitter",model);
 	     
 
 	

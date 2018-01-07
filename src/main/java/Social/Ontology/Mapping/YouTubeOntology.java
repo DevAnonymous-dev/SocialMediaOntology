@@ -7,11 +7,12 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public class YouTubeOntology implements OntologyMapping {
 
-	public OntModel mapptoOntology(String socialMedia) {
-	
+	public OntModel mapptoOntology(String socialMedia, OntModel ontology) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
 	public boolean instanciateOntology(File file) {
 		// TODO Auto-generated method stub
 		return false;

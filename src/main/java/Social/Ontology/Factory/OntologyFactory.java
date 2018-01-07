@@ -11,7 +11,7 @@ public class OntologyFactory {
 	         return null;
 	      }		
 	      if(ontologyName.equalsIgnoreCase("Twitter")){
-	         return new TwitterOntology();
+	      //   return new TwitterOntology();
 	         
 	      } else if(ontologyName.equalsIgnoreCase("YouTube")){
 	         return new YouTubeOntology();

@@ -7,7 +7,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public interface OntologyMapping {
 	
-	public OntModel mapptoOntology(String socialMedia);
+	public OntModel mapptoOntology(String socialMedia, OntModel ontology);
 	public boolean instanciateOntology (File file);
 	public boolean loadOntology (RDF data);
 		

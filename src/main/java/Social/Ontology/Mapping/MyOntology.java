@@ -11,7 +11,7 @@ import com.hp.hpl.jena.vocabulary.XSD;
 
 public class MyOntology {
 
-	public static void main(String[] args) {
+	public OntModel buildOntology () {
 
 		// Create an empty ontology model
 		OntModel ontModel = ModelFactory
@@ -192,7 +192,8 @@ public class MyOntology {
 
 		// write the model in Turtle
 		ontModel.write(System.out, "RDF/XML-ABBREV");
-		// return ontModel;
+		
+		return ontModel;
 
 	}
 
